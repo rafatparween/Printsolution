@@ -95,7 +95,7 @@ const PopularServices = () => {
 
   return (
     <>
-      <div className="py-12 mt-[-182px]">
+      <div className="py-12 ">
         <h2 className="text-2xl font-semibold text-center mb-8 text-[32px] text-[#0C71C3] font-sans">Popular Services</h2>
         <div className="flex justify-center gap-8 items-center">
           {services.map((service, index) => (

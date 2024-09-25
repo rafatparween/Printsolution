@@ -157,12 +157,174 @@
 // export default Navbar;
 
 
+// import React, { useState, useContext } from 'react';
+// import { Link } from 'react-router-dom';
+// import { Link as ScrollLink } from 'react-scroll'; // Import Scroll Link from react-scroll
+// import LocalMallIcon from '@mui/icons-material/LocalMall';
+// import { CartContext } from './product/CartContext';
+// import PrinterProductList from './product/ProductsListing';
+
+// const Navbar = () => {
+//   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+//   const { cartItems } = useContext(CartContext);
+
+//   const toggleMobileMenu = () => {
+//     setIsMobileMenuOpen(!isMobileMenuOpen);
+//   };
+
+//   return (
+//     <>
+
+//       <div className="h-[120px] bg-[white] z-50">
+//         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
+//           <div className="flex justify-between items-center h-16">
+//             <div className="flex items-center xl:ml-[-188px] 2xl:ml-[-188px]">
+//               <Link to="/" className="text-2xl text-[32px] text-[#0C71C3] xl:ml-[-60px] 2xl:ml-[-60px] font-sans">
+//                 Hewlett Hub Solutions
+//               </Link>
+//             </div>
+//             <div className="hidden lg:flex lg:items-center lg:space-x-8">
+//               <Link
+//                 to="/"
+//                 className="text-[black] hover:text-[blue] px-3 py-2 rounded-md hover:border border-[black] text-[22px] font-sans"
+//               >
+//                 Home
+//               </Link>
+//               <Link
+//                 to="/about"
+//                 className="hover:border border-[blue] hover:text-[blue] px-3 py-2 rounded-md text-[black] text-[22px] font-sans"
+//               >
+//                 About
+//               </Link>
+//               {/* ScrollLink for smooth scrolling to the service section */}
+//               <ScrollLink
+//                 to="serviceSection" // This should match the section ID in the page
+//                 smooth={true}
+//                 duration={500}
+//                 offset={-70} // Offset to adjust for fixed headers
+//                 className="hover:border border-[blue] hover:text-[blue] px-3 py-2 rounded-md text-[black] text-[22px] font-sans cursor-pointer"
+//               >
+//                 Service
+//               </ScrollLink>
+//               <Link
+//                 to="/membership"
+//                 className="hover:border border-[blue] hover:text-[blue] px-3 py-2 rounded-md text-[black] text-[22px] font-sans"
+//               >
+//                 Membership
+//               </Link>
+//               <div className="relative"></div>
+//             </div>
+//             <div className="flex items-center lg:hidden">
+//               <button
+//                 type="button"
+//                 className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-200 focus:outline-none focus:bg-gray-200 focus:text-gray-500 text-[white]"
+//                 aria-controls="mobile-menu"
+//                 aria-expanded={isMobileMenuOpen}
+//                 onClick={toggleMobileMenu}
+//               >
+//                 <span className="sr-only">Open main menu</span>
+//                 <svg
+//                   className={`${isMobileMenuOpen ? 'hidden' : 'block'} h-6 w-6`}
+//                   xmlns="http://www.w3.org/2000/svg"
+//                   fill="red"
+//                   viewBox="0 0 24 24"
+//                   stroke="currentColor"
+//                   aria-hidden="true"
+//                 >
+//                   <path
+//                     strokeLinecap="round"
+//                     strokeLinejoin="round"
+//                     strokeWidth="2"
+//                     d="M4 6h16M4 12h16m-7 6h7"
+//                   />
+//                 </svg>
+//                 <svg
+//                   className={`${isMobileMenuOpen ? 'block' : 'hidden'} h-6 w-6`}
+//                   xmlns="http://www.w3.org/2000/svg"
+//                   fill="none"
+//                   viewBox="0 0 24 24"
+//                   stroke="currentColor"
+//                   aria-hidden="true"
+//                 >
+//                   <path
+//                     strokeLinecap="round"
+//                     strokeLinejoin="round"
+//                     strokeWidth="2"
+//                     d="M6 18L18 6M6 6l12 12"
+//                   />
+//                 </svg>
+//               </button>
+//             </div>
+//           </div>
+//         </div>
+
+//         <div
+//           className={`${isMobileMenuOpen ? 'block' : 'hidden'} lg:hidden`}
+//           id="mobile-menu"
+//         >
+//           <div className="px-2 pt-2 pb-3 space-y-1">
+//             <Link
+//               to="/"
+//               className="hover:border border-[#0f766e] text-gray-900 hover:text-[#0f766e] block px-3 py-2 rounded-md text-base font-medium"
+//             >
+//               Home
+//             </Link>
+//             <Link
+//               to="/about"
+//               className="hover:border border-[#0f766e] text-gray-900 hover:text-[#0f766e] block px-3 py-2 rounded-md text-base font-medium"
+//             >
+//               About
+//             </Link>
+//             <ScrollLink
+//               to="serviceSection"
+//               smooth={true}
+//               duration={500}
+//               offset={-70}
+//               className="hover:border border-[#0f766e] text-gray-900 hover:text-[#0f766e] block px-3 py-2 rounded-md text-base font-medium cursor-pointer"
+//             >
+//               Service
+//             </ScrollLink>
+//             <Link
+//               to="/product"
+//               className="hover:border border-[#0f766e] text-gray-900 hover:text-[#0f766e] block px-3 py-2 rounded-md text-base font-medium"
+//             >
+//               Product
+//             </Link>
+//             <Link
+//               to="/membership"
+//               className="hover:border border-[#0f766e] text-gray-900 hover:text-[#0f766e] block px-3 py-2 rounded-md text-base font-medium"
+//             >
+//               Membership
+//             </Link>
+//             <Link
+//               to="/cart"
+//               className="hover:border border-[#0f766e] text-gray-900 hover:text-[#0f766e] px-3 py-2 rounded-md text-sm font-medium relative"
+//             >
+//               <LocalMallIcon sx={{ fontSize: '2rem' }} />
+//               {cartItems.length > 0 && (
+//                 <span className="absolute -top-1 -right-1 bg-red-500 text-white rounded-full px-2 py-1 text-xs">
+//                   {cartItems.length}
+//                 </span>
+//               )}
+//             </Link>
+//           </div>
+//         </div>
+//       </div>
+//     </>
+
+
+//   );
+// };
+
+// export default Navbar;
+
+
+
 import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { Link as ScrollLink } from 'react-scroll'; // Import Scroll Link from react-scroll
+import { Link as ScrollLink } from 'react-scroll';
 import LocalMallIcon from '@mui/icons-material/LocalMall';
 import { CartContext } from './product/CartContext';
-import PrinterProductList from './product/ProductsListing';
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -173,105 +335,25 @@ const Navbar = () => {
   };
 
   return (
-    <>
-
-      <div className="bg-[white] z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-[20px]">
-          <div className="flex justify-between h-16">
-            <div className="flex items-center xl:ml-[-188px] 2xl:ml-[-188px]">
-              <Link to="/" className="text-2xl text-[32px] text-[#0C71C3] xl:ml-[-60px] 2xl:ml-[-60px] font-sans">
-                Hewlett Hub Solutions
-              </Link>
-            </div>
-            <div className="hidden lg:flex lg:items-center lg:space-x-8">
-              <Link
-                to="/"
-                className="text-[black] hover:text-[blue] px-3 py-2 rounded-md hover:border border-[black] text-[22px] font-sans"
-              >
-                Home
-              </Link>
-              <Link
-                to="/about"
-                className="hover:border border-[blue] hover:text-[blue] px-3 py-2 rounded-md text-[black] text-[22px] font-sans"
-              >
-                About
-              </Link>
-              {/* ScrollLink for smooth scrolling to the service section */}
-              <ScrollLink
-                to="serviceSection" // This should match the section ID in the page
-                smooth={true}
-                duration={500}
-                offset={-70} // Offset to adjust for fixed headers
-                className="hover:border border-[blue] hover:text-[blue] px-3 py-2 rounded-md text-[black] text-[22px] font-sans cursor-pointer"
-              >
-                Service
-              </ScrollLink>
-              <Link
-                to="/membership"
-                className="hover:border border-[blue] hover:text-[blue] px-3 py-2 rounded-md text-[black] text-[22px] font-sans"
-              >
-                Membership
-              </Link>
-              <div className="relative"></div>
-            </div>
-            <div className="flex items-center lg:hidden">
-              <button
-                type="button"
-                className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-200 focus:outline-none focus:bg-gray-200 focus:text-gray-500 text-[white]"
-                aria-controls="mobile-menu"
-                aria-expanded={isMobileMenuOpen}
-                onClick={toggleMobileMenu}
-              >
-                <span className="sr-only">Open main menu</span>
-                <svg
-                  className={`${isMobileMenuOpen ? 'hidden' : 'block'} h-6 w-6`}
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="red"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  aria-hidden="true"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M4 6h16M4 12h16m-7 6h7"
-                  />
-                </svg>
-                <svg
-                  className={`${isMobileMenuOpen ? 'block' : 'hidden'} h-6 w-6`}
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  aria-hidden="true"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                </svg>
-              </button>
-            </div>
+    <div className="bg-white z-50 ">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center h-[120px]">
+          <div className="flex items-center">
+            <Link to="/" className="text-[39px] text-[#0C71C3] font-sans 2xl:ml-[-225px]">
+              Hewlett Hub Solutions
+            </Link>
           </div>
-        </div>
-
-        <div
-          className={`${isMobileMenuOpen ? 'block' : 'hidden'} lg:hidden`}
-          id="mobile-menu"
-        >
-          <div className="px-2 pt-2 pb-3 space-y-1">
+          <div className="hidden lg:flex lg:items-center lg:space-x-8">
+            {/* Center all items vertically */}
             <Link
               to="/"
-              className="hover:border border-[#0f766e] text-gray-900 hover:text-[#0f766e] block px-3 py-2 rounded-md text-base font-medium"
+              className="text-black hover:text-blue px-3 py-2 rounded-md text-[23px] flex items-center"
             >
               Home
             </Link>
             <Link
               to="/about"
-              className="hover:border border-[#0f766e] text-gray-900 hover:text-[#0f766e] block px-3 py-2 rounded-md text-base font-medium"
+              className="hover:text-blue px-3 py-2 rounded-md text-[23px] flex items-center"
             >
               About
             </Link>
@@ -280,41 +362,87 @@ const Navbar = () => {
               smooth={true}
               duration={500}
               offset={-70}
-              className="hover:border border-[#0f766e] text-gray-900 hover:text-[#0f766e] block px-3 py-2 rounded-md text-base font-medium cursor-pointer"
+              className="hover:text-blue px-3 py-2 rounded-md text-[23px] flex items-center cursor-pointer"
             >
               Service
             </ScrollLink>
             <Link
-              to="/product"
-              className="hover:border border-[#0f766e] text-gray-900 hover:text-[#0f766e] block px-3 py-2 rounded-md text-base font-medium"
-            >
-              Product
-            </Link>
-            <Link
               to="/membership"
-              className="hover:border border-[#0f766e] text-gray-900 hover:text-[#0f766e] block px-3 py-2 rounded-md text-base font-medium"
+              className="hover:text-blue px-3 py-2 rounded-md text-[23px] flex items-center"
             >
               Membership
             </Link>
-            <Link
-              to="/cart"
-              className="hover:border border-[#0f766e] text-gray-900 hover:text-[#0f766e] px-3 py-2 rounded-md text-sm font-medium relative"
+          </div>
+          <div className="flex items-center lg:hidden">
+            <button
+              type="button"
+              className="p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-200 focus:outline-none focus:bg-gray-200 focus:text-gray-500"
+              aria-controls="mobile-menu"
+              aria-expanded={isMobileMenuOpen}
+              onClick={toggleMobileMenu}
             >
-              <LocalMallIcon sx={{ fontSize: '2rem' }} />
-              {cartItems.length > 0 && (
-                <span className="absolute -top-1 -right-1 bg-red-500 text-white rounded-full px-2 py-1 text-xs">
-                  {cartItems.length}
-                </span>
-              )}
-            </Link>
+              <span className="sr-only">Open main menu</span>
+              <svg
+                className={`${isMobileMenuOpen ? 'hidden' : 'block'} h-6 w-6`}
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16m-7 6h7" />
+              </svg>
+              <svg
+                className={`${isMobileMenuOpen ? 'block' : 'hidden'} h-6 w-6`}
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
           </div>
         </div>
       </div>
-    </>
 
-
+      <div className={`${isMobileMenuOpen ? 'block' : 'hidden'} lg:hidden`} id="mobile-menu">
+        <div className="px-2 pt-2 pb-3 space-y-1">
+          <Link to="/" className="block px-3 py-2 rounded-md text-base font-medium text-gray-900 hover:text-blue">
+            Home
+          </Link>
+          <Link to="/about" className="block px-3 py-2 rounded-md text-base font-medium text-gray-900 hover:text-blue">
+            About
+          </Link>
+          <ScrollLink
+            to="serviceSection"
+            smooth={true}
+            duration={500}
+            offset={-70}
+            className="block px-3 py-2 rounded-md text-base font-medium text-gray-900 hover:text-blue cursor-pointer"
+          >
+            Service
+          </ScrollLink>
+          <Link to="/membership" className="block px-3 py-2 rounded-md text-base font-medium text-gray-900 hover:text-blue">
+            Membership
+          </Link>
+          <Link to="/cart" className="relative block px-3 py-2 rounded-md text-base font-medium text-gray-900 hover:text-blue">
+            <LocalMallIcon sx={{ fontSize: '2rem' }} />
+            {cartItems.length > 0 && (
+              <span className="absolute -top-1 -right-1 bg-red-500 text-white rounded-full px-2 py-1 text-xs">
+                {cartItems.length}
+              </span>
+            )}
+          </Link>
+        </div>
+      </div>
+    </div>
   );
 };
 
 export default Navbar;
+
+
+
 

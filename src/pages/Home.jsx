@@ -257,7 +257,7 @@ const Slider = () => {
           onClick={() => setDropdownOpen(false)} // Close dropdown on clicking outside
         ></div>
       )}
-      <div className="min-h-screen flex items-center justify-center xl:mt-[-153px] 2xl:mt-[-153px]">
+      <div className="2xl:h-[600px] flex items-center justify-center ">
         <header className="bg-gradient-to-r from-[#1E3A8A] via-[#3B82F6] to-[#60A5FA] h-[600px] xl:w-[1836px] 2xl:w-[1836px] relative flex items-center">
           <div className="container mx-auto flex flex-col-reverse lg:flex-row items-center">
             <div className="text-white lg:w-1/2 p-8 ml-[203px]">
